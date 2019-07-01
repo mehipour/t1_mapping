@@ -1,6 +1,6 @@
-function segment_then_find_mean_and_sd_v01_20190630(img,path,filename,image_type)
+function segment_then_find_mean_and_sd_v01_20190630(img,path,filename)
 %
-% segment_tumors_v01_20190630(img,path,image_type)
+% segment_tumors_v01_20190630(img,path)
 %
 % File created by Mehrdad Pourfathi on 6/30/2019
 %
@@ -76,7 +76,7 @@ for slice_loop = 1:Nslice
         mask(slice_loop).reg(region_loop).mean = nanmean(aux(:));
         mask(slice_loop).reg(region_loop).std = nanstd(aux(:));
 
-        fprintf('Slice    Region   mean-R1    SD-R1 \n');
+        fprintf('Slice    Region      mean       SD \n');
         fprintf('  %1.0f     %s    %4.4f   %4.4f \n\n',...
             slice_loop, mask(slice_loop).reg(region_loop).region, ....
             mask(slice_loop).reg(region_loop).mean, ...

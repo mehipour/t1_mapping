@@ -8,12 +8,12 @@
 % Pre and Post file paths (make sure that there is "/" at the end of the
 % main path name!)
 % Folder names should be just the flip angle
-pre_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190220-Phantom/VFA selected images 2-19-2019/';
-post_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190220-Phantom/VFA selected images 2-19-2019/';
+% pre_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190220-Phantom/VFA selected images 2-19-2019/';
+% post_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190220-Phantom/VFA selected images 2-19-2019/';
 
 % animal
-pre_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190130-Xenograft/DCE and T1 mapping_OVASC1_2 Xenografts/T1 mapping/VFA AFter Magnevist inj/VFA ';
-post_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190130-Xenograft/DCE and T1 mapping_OVASC1_2 Xenografts/T1 mapping/VFA Before Magnevist inj/VFA ';
+pre_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190130-Xenograft/DCE and T1 mapping_OVASC1_2 Xenografts/T1 mapping/VFA Before Magnevist inj/VFA ';
+post_path = '/Users/mehipour/Library/Mobile Documents/com~apple~CloudDocs/Data/Cancer Project with Rutgers/20190130-Xenograft/DCE and T1 mapping_OVASC1_2 Xenografts/T1 mapping/VFA AFter Magnevist inj/VFA ';
 
 % Basic MRI paramaeters
 % FA = [5 8 13 18 25 30 35 60 160];
@@ -36,7 +36,7 @@ manual_c_segmentation = 0;   % if 1 then can manually segment c image
 % The code first checks if R1 maps were already produced, if so it does
 % not fit and laods the data. Setting this flag to 1 performs the fit
 % regardless and overrides the data
-fit_override = 1;  
+fit_override = 0;  
 % filename to save R1 maps, files will be saved in the main main file path
 % for each study
 pre_file_name = 'Pre R1 maps';
@@ -59,7 +59,7 @@ if pre
     end
     % show pre R1 maps
     figure('name','Pre R1 Map'); 
-    show_multislice_maps_v01_20190630(pre_r1_map,'jet',[0 0.1]);
+    show_multislice_maps_v01_20190630(pre_r1_map,'jet',[0 20]);
 end
 
 %% Process Post-Gd Data
@@ -79,7 +79,7 @@ if post
     end
     % show pre R1 maps
     figure('name','Post R1 Map'); 
-    show_multislice_maps_v01_20190630(post_r1_map,'jet',[0 0.1]);
+    show_multislice_maps_v01_20190630(post_r1_map,'jet',[0 20]);
 end
 
 %% Create Gd Concentration Maps (only will run if pre and post maps are selected)
@@ -89,5 +89,5 @@ if and(pre,post)
         segment_then_find_mean_and_sd_v01_20190630(c,pre_path,'Concentration Map','c (mM)')
     end
     figure('name','Gd Concentration Map (mM)')
-    show_multislice_maps_v01_20190630(c,'jet',[0 2]);
+    show_multislice_maps_v01_20190630(c,'jet',[0  10]);
 end
