@@ -12,6 +12,9 @@ function segment_then_find_mean_and_sd_v01_20190630(img,path,filename)
 % Ouput: 
 %   mean and sd of image
 %%
+%% edited by Mehrdad Pourfathi on 8/5/2019
+% shows the log of image when selecting ROI.
+
 % segmentation file name
 segmentation_file = strcat(filename,' segmentation');
 path = find_file_path_v01_20190630(path);
@@ -40,7 +43,7 @@ if ~exist(segmentation_file_path,'file')
 
         % use the overlaid pyruvate map
         figure('name','Segment from here') 
-        imagesc(img(:,:,slice_loop));
+        imagesc(1+log(img(:,:,slice_loop)));
         
         % loop over the regions
         for region_loop = 1:length(reg)
